@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="Starter">
+    <head>
+         <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <title>Powered by Wakanda</title>
+
+        <!-- build:css css/vendor.css   -->
+        <link rel="stylesheet" href="assets/libs/bootstrap-css/css/bootstrap.css ">
+        <!-- endbuild -->
+
+        <!-- build:css css/main.css   -->
+        <link href="assets/css/style.css" rel="stylesheet">
+        <!-- endbuild -->
+    </head>
+    <body>
+      <div class="haut">
+      	<input type="button"  value="Add Student" class="btn btn-primary" onclick="window.location.href='ajouter.html';"/>
+      </div>
+      <div class="milieu"></div>
+        <div  ng-controller="HomeController">
+        	<p>Number of tasks : {{tasks.length}}</p>
+        	<div class="table-responsive col-md-12" >
+        		<table class="table table-striped">
+        			<thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Birthday</th>
+                  <th>CNE</th>
+                  <th>operation</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<tr ng-repeat="task in tasks">
+              		<td>{{task.ID}}</td>
+              		<td>{{task.first_name}}</td>
+              		<td>{{task.last_name}}</td>
+              		<td>{{task.email}}</td>
+              		<td>{{task.birth_date}}</td>
+              		<td>{{task.cne}}</td>
+              		<td><input type="button"  value="Supprimer" class="btn btn-primary"  ng-click="removeOnClick(task)"/>
+              		<input type="button"  value="Modifier" class="btn btn-primary" ng-click="updateOnClick(task)"/>
+		            </td>
+              	</tr>
+              </tbody>
+        		</table>
+        	</div>
+        		
+        </div>
+        
+        <div ng-controller="HomeController">
+        	<form >
+         <table class="table table-striped"	 >
+         	<tr>
+         		<td><label>First Name: </label></td><td><input type="text" ng-model="firstname" /></td>
+         	</tr>
+         	<tr>
+         		<td><label>Last Name: </label></td><td><input type="text" ng-model="lname" /></td>
+         	</tr>
+         	<tr>
+         		<td><label>Email: </label></td><td><input type="email" ng-model="email" /></td>
+         	</tr>
+         	<tr>
+         		<td><label>Birthday: </label></td><td><input type="date" ng-model="bdate" /></td>
+         	</tr>
+         	<tr>
+         		<td><label>CNE: </label></td><td><input type="text" ng-model="cne" maxlength="12" /></td>
+         	</tr>
+         	<tr>
+         		<td><input type="submit"  value="Ajouter" /></td><td><input type="reset" ng-reset="" value="Annuler" /></td>
+         	</tr>
+         </table>
+         </form>
+        	
+        </div>
+       
+
+         <!-- build:js scripts/vendor.js   -->
+        <script src="assets/libs/angular/angular.js"></script>
+        <script src="assets/libs/angular-wakanda/angular-wakanda.js"></script>
+        <!-- endbuild -->
+        
+    	<!-- build:js scripts/main.js   -->
+        <script src="app/app.js"></script>
+        <script src="app/controllers/home.js"></script>
+        <!-- endbuild -->
+    	
+    </body>
+</html>
